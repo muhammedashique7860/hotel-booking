@@ -1,0 +1,39 @@
+
+{% extends 'user/shared/base.html' %}
+{% block content %}
+{% load static %}
+
+<body style="background-image: url({% static 'images/bg2.jpg' %}); background-repeat:no-repeat;
+background-size:1800px 800px; text-align:center;">
+
+<u><h1 style="padding-top: 50px; padding-left: 350px;">My Bookings</h1></u>
+<div style="padding-top: 30px;">
+
+<table class="table  table-hover table-striped table-bordered table-dark"  >
+    <thead>
+        <tr class="table-active">
+            <th>Checkin </th>
+            <th>Checkout</th>
+            <th>Amount</th>
+            <th>room</th>
+           
+        </tr>
+    </thead>
+    <tbody>
+        {% for j in  i %}
+            <tr>
+                <td>{{j.checkin}}</td>
+                <td>{{j.checkout}} </td>
+                <td>{{j.amount}}</td>
+                <td>{{j.room_id}}</td>
+                <td>
+                 <a href="{% url 'cancel_booking' id=j.id %}" class="btn btn-danger btn-sm">cancel</a>
+                 </td>
+
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</body>
+{% endblock content %}

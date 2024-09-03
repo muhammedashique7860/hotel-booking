@@ -1,0 +1,39 @@
+
+{% extends 'user/shared/base.html' %}
+{% block content %}
+{% load static %}
+<link href="{% static 'css/style.css' %}" rel="stylesheet">
+<div class="w3-content" style="max-width:1532px;">
+
+  <div class="w3-container w3-margin-top" >
+    <h1>Rooms</h1>
+    <p><h4> Make yourself at home is our slogan. We offer the best beds in the industry. Sleep well and rest well.</h4></p>
+  </div>
+  
+   <br><br>
+  <div id="d1">
+  {% for j in i %}
+    <div class="w3-row-padding w3-padding-16">
+      <div class="w3-third w3-margin-bottom">
+        <img src="/media/{{j.image}}" alt="Norway" width="600px" height="500px">
+        <div class="w3-container w3-white" id="d2">
+          <h3>{{j.roomtype}} Room</h3>
+          <p>{{j.des}}</p>
+          <p>Bed Type:{{j.bedtype}}</p>
+          <h6 class="w3-opacity">{{j.rate}}</h6>
+          {% if j.ac %}
+           <h6>AC</h6>
+          {% else %}
+           <h6>Non AC</h6>
+          {% endif %}
+          <p class="w3-large"><i class="fa fa-bath"></i> <i class="fa fa-phone"></i> <i class="fa fa-wifi"></i></p>
+          <a href="{% url 'book' j.id %}"><button class="w3-button w3-block w3-black w3-margin-bottom btn btn-primary btn-lg active ">BOOK NOW</button></a>
+          
+        </div>
+      </div>
+    </div>
+   <br><br>
+  {% endfor %}
+    
+
+{% endblock content %}
